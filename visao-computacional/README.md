@@ -9,6 +9,13 @@ Detecção de **fumaça** (não de chama — a pluma é visível a quilômetros 
 
 O mesmo modelo valida as fotos enviadas por relato humano no WhatsApp, o que estende a verificação automática para toda a rede — inclusive onde não há câmera instalada.
 
-## Arquivos
+# O que fazer para usar:
 
-_(notebook de treino e vídeos de demonstração entram aqui)_
+- Caso queira uma demonstração rápida, escola o "aceiro_treinado". Ele já está funcional pronto para identificar a fumaça.
+- O outro arquivo "aceiro_metodo" é todo o projeot de treinamento alpha. Demorará ~2 horas para o treinamento.
+
+- Video está com o nome "demo", se atente para o nome do vídeo que está nos códigos.
+
+_O best.pt será essencial para rodar no uso do "aceiro_treinado"._
+
+_Qualquer dúvida, entrar em contato com :(91) 98534-7535 ou jhonatanmatos070@gmail.com // jhonatanalmeida4306@gmail.com_
