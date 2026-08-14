@@ -306,7 +306,7 @@ p.intro{margin-top:16px;max-width:56ch;color:var(--fumaca);font-size:16px}
 
 /* ================= APP ================= */
 .app{
-  position:relative;background:#F7F2E7;min-height:640px;
+  position:relative;background:#F7F2E7;height:640px;
   display:flex;flex-direction:column;transition:background .5s ease;
 }
 .app .statusbar{color:#241009}
@@ -322,7 +322,13 @@ p.intro{margin-top:16px;max-width:56ch;color:var(--fumaca);font-size:16px}
   font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
   padding:5px 9px;border:1px solid rgba(36,16,9,.3);color:#6B4A38;transition:.4s;
 }
-.app-corpo{flex:1;padding:4px 18px 22px;display:flex;flex-direction:column;gap:13px}
+.app-corpo{
+  flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;
+  padding:4px 18px 22px;display:flex;flex-direction:column;gap:13px;
+}
+.app-corpo::-webkit-scrollbar{width:4px}
+.app-corpo::-webkit-scrollbar-thumb{background:rgba(36,16,9,.22);border-radius:2px}
+.app.fogo .app-corpo::-webkit-scrollbar-thumb{background:rgba(255,138,91,.35)}
 .cartao{
   background:#fff;border:1px solid rgba(36,16,9,.1);padding:15px;
   box-shadow:0 2px 8px rgba(36,16,9,.05);
@@ -398,6 +404,7 @@ p.intro{margin-top:16px;max-width:56ch;color:var(--fumaca);font-size:16px}
 .app.fogo{background:#3D0A02}
 .app.fogo .app-marca b{color:#FFE9DC}
 .app.fogo .pill{border-color:rgba(255,138,91,.5);color:#FF8A5B}
+.calmo{display:flex;flex-direction:column;gap:13px;flex:1}
 .app.fogo .calmo{display:none}
 .emerg{display:none;flex-direction:column;gap:13px;flex:1}
 .app.fogo .emerg{display:flex;animation:entra .45s ease-out}
@@ -790,7 +797,7 @@ p.intro{margin-top:16px;max-width:56ch;color:var(--fumaca);font-size:16px}
 
           <div class="app-corpo">
             <!-- estado calmo -->
-            <div class="calmo" style="display:flex;flex-direction:column;gap:13px;flex:1">
+            <div class="calmo">
               <div class="cartao">
                 <h4>Risco de fogo hoje</h4>
                 <div class="risco">
@@ -1141,9 +1148,6 @@ p.intro{margin-top:16px;max-width:56ch;color:var(--fumaca);font-size:16px}
   function declarar(){
     document.getElementById('recibo').classList.add('ver');
   }
-
-  //Esse é um código a fins de simulação para um Hackaton. Created by: Jhonatan Almeida
-  // Vasco da gama
 </script>
 
 </body>
