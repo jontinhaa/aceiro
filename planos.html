@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aceiro — planos e modelo de receita</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<meta name="theme-color" content="#1C0C05">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --terra:#1C0C05; --terra2:#2A130A; --terra3:#3A1C0F;
+  --palha:#EFE3C8; --fumaca:#B7AB99; --fogo:#FF5A1F; --fogo2:#FF8A45;
+  --brasa:#C93A0C; --ocre:#E0A928; --pasto:#7BA35A; --branco:#FFF9EF;
+  --disp:"Bricolage Grotesque",system-ui,sans-serif;
+  --corpo:"Instrument Sans",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:
+    radial-gradient(110% 55% at 50% 112%, rgba(255,90,31,.2) 0%, transparent 58%),
+    var(--terra);
+  color:var(--palha);font-family:var(--corpo);font-size:16px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;min-height:100vh;
+}
+svg{display:block}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:48px 22px 64px}
+
+/* cabeçalho */
+.topo{text-align:center;margin-bottom:46px}
+.marca{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px}
+.marca svg{width:28px;height:28px}
+.marca span{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fumaca)}
+h1{
+  font-family:var(--disp);font-weight:800;
+  font-size:clamp(32px,5.4vw,50px);line-height:1;letter-spacing:-.035em;color:var(--branco);
+}
+.lead{margin:16px auto 0;max-width:54ch;color:var(--fumaca);font-size:16.5px}
+.lead b{color:var(--ocre);font-weight:600}
+
+/* cartões */
+.planos{display:grid;grid-template-columns:1fr;gap:18px;align-items:start}
+@media(min-width:900px){.planos{grid-template-columns:repeat(3,1fr);gap:20px}}
+
+.plano{
+  position:relative;background:linear-gradient(180deg,var(--terra2),rgba(42,19,10,.35));
+  border:1px solid rgba(183,171,153,.2);padding:28px 24px 26px;height:100%;
+  display:flex;flex-direction:column;
+}
+.plano.destaque{
+  border:1.5px solid var(--fogo);
+  background:linear-gradient(180deg,rgba(255,90,31,.1),rgba(42,19,10,.45));
+  box-shadow:0 18px 50px rgba(255,90,31,.16);
+}
+.selo{
+  position:absolute;top:-11px;left:50%;transform:translateX(-50%);
+  background:var(--fogo);color:#230A01;padding:5px 14px;white-space:nowrap;
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+}
+.p-nome{
+  font-family:var(--disp);font-weight:800;font-size:26px;letter-spacing:-.02em;
+  color:var(--branco);line-height:1.05;
+}
+.p-quem{
+  margin-top:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ocre);
+}
+.p-preco{
+  margin-top:22px;padding-bottom:20px;border-bottom:1px solid rgba(183,171,153,.2);
+}
+.p-preco b{
+  font-family:var(--disp);font-weight:800;font-size:38px;line-height:1;
+  letter-spacing:-.035em;color:var(--branco);display:block;
+}
+.p-preco b small{font-size:19px;font-weight:600;letter-spacing:-.01em}
+.p-preco .obs{display:block;margin-top:9px;font-size:13px;color:var(--fumaca);line-height:1.5}
+.p-preco .obs em{color:var(--palha);font-style:normal;font-weight:600}
+
+.itens{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.itens li{display:flex;gap:10px;font-size:14.3px;color:var(--palha);line-height:1.45}
+.itens li svg{width:15px;height:15px;flex:none;margin-top:3px}
+.itens li b{color:var(--branco);font-weight:600}
+.p-rodape{
+  margin-top:22px;padding-top:16px;border-top:1px dashed rgba(183,171,153,.25);
+  font-size:12.5px;color:var(--fumaca);line-height:1.55;
+}
+.p-rodape b{color:var(--ocre);font-weight:600}
+
+/* faixa do quarto */
+.quarta{
+  margin-top:26px;border:1px solid rgba(224,169,40,.42);
+  background:
+    radial-gradient(70% 130% at 100% 0%, rgba(224,169,40,.1), transparent 60%),
+    linear-gradient(180deg,var(--terra2),var(--terra));
+  padding:30px 26px;
+}
+.q-topo{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px}
+.q-topo h2{font-family:var(--disp);font-weight:800;font-size:27px;letter-spacing:-.025em;color:var(--branco)}
+.q-tag{
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ocre);border:1px solid rgba(224,169,40,.45);padding:4px 10px;
+}
+.q-lead{margin-top:12px;color:var(--fumaca);font-size:15px;max-width:70ch}
+.q-lead b{color:var(--palha);font-weight:600}
+.q-grid{display:grid;grid-template-columns:1fr;gap:1px;margin-top:22px;background:rgba(183,171,153,.2)}
+@media(min-width:760px){.q-grid{grid-template-columns:repeat(3,1fr)}}
+.q-i{background:var(--terra);padding:18px 18px 17px}
+.q-i h4{
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--fogo2);font-weight:500;margin-bottom:9px;
+}
+.q-i p{font-size:14px;color:var(--palha);line-height:1.5}
+.q-i .como{display:block;margin-top:9px;font-size:12.5px;color:var(--fumaca)}
+.q-i .como b{color:var(--ocre);font-weight:600}
+.q-nota{
+  margin-top:20px;padding:14px 16px;border-left:3px solid var(--pasto);
+  background:rgba(123,163,90,.09);font-size:13.5px;color:var(--palha);line-height:1.55;
+}
+.q-nota b{color:var(--pasto)}
+
+/* regra de ouro */
+.regra{
+  margin-top:26px;display:grid;grid-template-columns:1fr;gap:1px;
+  background:rgba(183,171,153,.2);border:1px solid rgba(183,171,153,.2);
+}
+@media(min-width:760px){.regra{grid-template-columns:repeat(3,1fr)}}
+.r-i{background:var(--terra);padding:20px}
+.r-i b{
+  display:block;font-family:var(--disp);font-weight:800;font-size:27px;
+  line-height:1;color:var(--branco);letter-spacing:-.025em;
+}
+.r-i small{
+  display:block;margin-top:8px;font-family:var(--mono);font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--fumaca);line-height:1.6;
+}
+.assina{
+  margin-top:34px;text-align:center;font-family:var(--disp);font-weight:600;
+  font-size:clamp(17px,3vw,23px);color:var(--ocre);letter-spacing:-.01em;
+}
+.rodape{
+  margin-top:30px;text-align:center;font-size:12px;color:#8F8172;line-height:1.7;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topo">
+    <div class="marca">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <path d="M6 26c3-7 7-11 14-13-3 5-2 8 1 10 2-3 5-4 8-3-1 8-6 14-13 14-6 0-10-3-10-8z" fill="#FF5A1F"/>
+        <rect x="2" y="30" width="36" height="4" fill="#E0A928"/>
+      </svg>
+      <span>Aceiro · modelo de receita</span>
+    </div>
+    <h1>Quem usa é o produtor.<br>Quem paga é quem tem mais a perder.</h1>
+    <p class="lead">A rede só tem valor se todo mundo estiver nela — por isso o produtor <b>nunca paga</b>. A receita vem de quem enxerga o fogo como prejuízo mensurável.</p>
+  </div>
+
+  <div class="planos">
+
+    <!-- REDE -->
+    <div class="plano">
+      <div class="p-nome">Rede</div>
+      <div class="p-quem">Todo produtor rural</div>
+      <div class="p-preco">
+        <b>R$ 0</b>
+        <span class="obs">Gratuito para sempre. Custa a nós <em>menos de R$ 600/mês</em> para cada mil usuários ativos.</span>
+      </div>
+      <ul class="itens">
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#7BA35A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Relato e alerta pelo WhatsApp, sem instalar nada</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#7BA35A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Ligação de voz na emergência</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#7BA35A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Queima declarada e aviso aos vizinhos</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#7BA35A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Ponte SEMAS: requerimento de queima pronto</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#7BA35A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Mapa de recursos da vizinhança</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#7BA35A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Focos do INPE, boletim de risco e Simulado da Seca</li>
+      </ul>
+      <p class="p-rodape">Não é caridade: <b>cada usuário gratuito é um sensor humano</b> que não pagamos para instalar nem manter.</p>
+    </div>
+
+    <!-- FAZENDA PRO -->
+    <div class="plano destaque">
+      <span class="selo">Cliente-âncora</span>
+      <div class="p-nome">Fazenda Pro</div>
+      <div class="p-quem">Fazendas grandes</div>
+      <div class="p-preco">
+        <b>R$ 700<small>–1.200</small> <small>/mês</small></b>
+        <span class="obs">Por ponto instalado, contrato de 24 a 36 meses. <em>Setup de R$ 5–8 mil</em> na instalação, com estudo de posicionamento da torre.</span>
+      </div>
+      <ul class="itens">
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#FF8A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Tudo do plano Rede</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#FF8A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Kit Sentinela em comodato</b> — câmera com visão computacional 24h + estação de vento no mesmo mastro</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#FF8A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Manutenção e SLA inclusos</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#FF8A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Plano de evacuação de gado por pasto</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#FF8A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Laudo com carimbo do tempo ICP-Brasil</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#FF8A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Selo Aceiro da propriedade</li>
+      </ul>
+      <p class="p-rodape">CAPEX de R$ 12–22 mil por ponto, metade coberta pelo setup. <b>Payback em 14 a 21 meses</b>, margem recorrente depois.</p>
+    </div>
+
+    <!-- CORPORATIVO -->
+    <div class="plano">
+      <div class="p-nome">Corporativo</div>
+      <div class="p-quem">Reflorestadora · carbono · prefeitura</div>
+      <div class="p-preco">
+        <b>R$ 3<small>–8 mil</small> <small>/mês</small></b>
+        <span class="obs">Contrato sob medida, por número de pontos e área coberta. <em>Convênio municipal a partir de R$ 2 mil/mês.</em></span>
+      </div>
+      <ul class="itens">
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#7BA35A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Tudo do Fazenda Pro, em vários pontos</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#7BA35A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Painel territorial de gestão e tempo de resposta</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#7BA35A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Integração com a brigada própria</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#7BA35A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Relatórios agregados de risco da região</li>
+        <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="#7BA35A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Fonte qualificada para a Defesa Civil municipal</li>
+      </ul>
+      <p class="p-rodape">Protege ativo de 10 anos, a marca <b>Município Verde</b> e projetos de carbono — que um único incêndio inviabiliza.</p>
+    </div>
+
+  </div>
+
+  <!-- QUARTA LINHA -->
+  <div class="quarta">
+    <div class="q-topo">
+      <h2>Dados e Selo</h2>
+      <span class="q-tag">Não é um plano · receita a partir do ano 2</span>
+    </div>
+    <p class="q-lead">As três linhas acima são assinaturas: alguém escolhe e contrata. Esta é diferente — ela <b>nasce do uso das outras</b>. Ninguém assina: o produtor autoriza o compartilhamento do próprio histórico e quem paga é a seguradora ou o banco. Só existe depois de duas safras de dados, quando o histórico passa a ter valor estatístico.</p>
+
+    <div class="q-grid">
+      <div class="q-i">
+        <h4>Selo de prevenção</h4>
+        <p>Histórico de queimas declaradas, aceiros feitos e fogo sem escape vira uma nota da propriedade — como o rastreador que barateia o seguro do carro.</p>
+        <span class="como">Receita: <b>comissão por apólice</b> emitida ou renovada com desconto pelo Selo.</span>
+      </div>
+      <div class="q-i">
+        <h4>Consulta ao histórico</h4>
+        <p>Seguradora e banco consultam o risco da propriedade e da região na hora de precificar a apólice ou analisar o crédito rural.</p>
+        <span class="como">Receita: <b>por consulta ou assinatura anual</b>, no modelo de bureau de risco.</span>
+      </div>
+      <div class="q-i">
+        <h4>Verificação de sinistro</h4>
+        <p>Hoje a seguradora manda perito a campo — caro e demorado. Nosso laudo georreferenciado chega em 48h, com prova de que não foi adulterado.</p>
+        <span class="como">Receita: <b>taxa por laudo validado</b>, mais barata que a perícia tradicional.</span>
+      </div>
+    </div>
+
+    <p class="q-nota"><b>O produtor não é o produto.</b> Ele é dono do próprio dado e o troca, com consentimento explícito, por desconto no seguro e acesso a crédito. Sem isso, reacenderíamos o medo de vigilância que a queima declarada existe para desarmar — e a rede morreria.</p>
+  </div>
+
+  <!-- REGRA DE OURO -->
+  <div class="regra">
+    <div class="r-i"><b>R$ 6–8 mil</b><small>é o que gastamos para descobrir se alguém paga, antes de qualquer hardware</small></div>
+    <div class="r-i"><b>Sem contrato,<br>sem ferro</b><small>nenhum equipamento é comprado antes de um contrato assinado</small></div>
+    <div class="r-i"><b>~mês 15</b><small>equilíbrio de caixa no cenário base, só com Paragominas</small></div>
+  </div>
+
+  <p class="assina">O maior aceiro de Paragominas é a vizinhança.</p>
+
+  <p class="rodape">
+    Aceiro · Hackathon IAGRO 2026 · Engenharia de Software, UEPA Paragominas<br>
+    Valores em ordem de grandeza para plano de negócio; hardware pede cotação antes da proposta final.
+  </p>
+
+</div>
+</body>
+</html>
